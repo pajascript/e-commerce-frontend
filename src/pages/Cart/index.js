@@ -104,7 +104,7 @@ const Cart = () => {
                                     <ProductAmount>{product.quantity}</ProductAmount>
                                     <Remove />
                                 </ProductAmountContainer>
-                                <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
+                                <ProductPrice>₱ {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
                         </Product>
                     ))}

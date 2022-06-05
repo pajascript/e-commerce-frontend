@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Success from './pages/Success';
 import { useSelector } from 'react-redux';
+import Profile from './pages/Profile';
+import Orders from './pages/Orders';
 
 const App = () => {
 
@@ -24,11 +26,15 @@ const App = () => {
 
         <Route path="/cart" element={<Cart />} />
 
+        <Route path="/orders" element={<Orders />} />
+
         <Route path="/success" element={<Success />} />
 
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
 
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+
+        <Route path="/profile" element={<Profile />} />
 
       </Routes>
     </Router>

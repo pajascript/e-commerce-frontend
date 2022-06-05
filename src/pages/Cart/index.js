@@ -34,22 +34,32 @@ import StripeCheckout from "react-stripe-checkout";
 import logo from "../../images/logo.jpg";
 import { useEffect, useState } from "react";
 import { userRequest} from "../../requestMethods";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const KEY = process.env.REACT_APP_STRIPE;
+const KEY = "pk_test_51KsO5fAnCla13EzJaa6Qw8JBAHBHO7dZH8Qqa5kD94sSz0r5ugncru2p83kuVt71lt8eJtwNqTM1UWAHoGA9BFz600wjRTewW4";
 
 
 const Cart = () => {
 
     const navigate = useNavigate();
     const cart = useSelector(state => state.cart);
+    const user = useSelector(state => state.user.currentUser)
     const [stripeToken, setStripeToken] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     const onToken = (token) => {
-        setStripeToken(token);
+        setStripeToken(token)
     };
 
+    
+    const handleQuantity = (type) => {
+        if (type ==="dec") {
+          quantity > 1 && setQuantity(quantity - 1);
+        } else {
+          setQuantity(quantity + 1);
+        }
+    };
 
     useEffect(() => {
         const makeRequest = async() => {
@@ -57,18 +67,19 @@ const Cart = () => {
 
                 const res = await userRequest.post("/checkout/payment", {
                     tokenId: stripeToken.id,
-                    amount: 500,
+                    amount: cart.total,
                 });
 
-                navigate("/success", { data: res.data });
-                console.log(res.data)
+                navigate("/success", { state: {stripeData: res.data, products: cart} });
             } catch {
-
+                
             }
         }
-        stripeToken && makeRequest();
+        stripeToken && cart.total > 0 && makeRequest();
 
     }, [stripeToken, cart.total]);
+
+    
 
   return (
     <Container>
@@ -78,7 +89,7 @@ const Cart = () => {
             <Title>YOUR BAG</Title>
             <Top>
 
-                <TopButton type="" >CONTINUE SHOPPING</TopButton>
+                <Link to="/" ><TopButton type="" >CONTINUE SHOPPING</TopButton></Link>
                 <TopTexts>
                     <TopText>Shopping Bag(2)</TopText>
                     <TopText>Your Wishlist</TopText>
@@ -88,7 +99,7 @@ const Cart = () => {
             <Bottom>
                 <Info>
                     { cart.products.map(product => (
-                        <Product>
+                        <Product >
                             <ProductDetail>
                                 <Img src={product.img} />
                                 <Details>
@@ -100,9 +111,9 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add />
+                                    <Remove onClick={ () => handleQuantity("dec")} />
                                     <ProductAmount>{product.quantity}</ProductAmount>
-                                    <Remove />
+                                    <Add onClick={ () => handleQuantity("inc")} />
                                 </ProductAmountContainer>
                                 <ProductPrice>₱ {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
@@ -114,28 +125,29 @@ const Cart = () => {
                     <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                     <SummaryItem>
                         <SummaryItemText>Subtotal</SummaryItemText>
-                        <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                        <SummaryItemPrice>₱ {cart.total}</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
-                        <SummaryItemText>Estimated Shipping</SummaryItemText>
-                        <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+                        <SummaryItemText>Shipping Fee</SummaryItemText>
+                        <SummaryItemPrice>₱ 38</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem type="total" >
                         <SummaryItemText>Total</SummaryItemText>
-                        <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                        <SummaryItemPrice>₱ {cart.total + 38}</SummaryItemPrice>
                     </SummaryItem>
-                    <StripeCheckout
+                    {user ? <StripeCheckout
                         name="Kalye Onse Vape Lounge"
                         image={logo}
                         billingAddress
                         shippingAddress
-                        description={`Your total is $${cart.total}`}
+                        description={`Your total is ₱${cart.total}`}
                         amount={cart.total * 100}
                         token={onToken}
                         stripeKey={KEY}
+                        email={user.email}
                     >
-                        <Button>CHECKOUT NOW</Button>
-                    </StripeCheckout>
+                        <Button >CHECKOUT NOW</Button>
+                    </StripeCheckout> : <Link to="/login">Login to Checkout</Link>}
                 </Summary>
             </Bottom>
         </Wrapper>

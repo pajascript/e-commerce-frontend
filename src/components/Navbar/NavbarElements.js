@@ -34,11 +34,16 @@ export const Language = styled.span`
 `;
 
 export const SearchContainer = styled.div`
-    border: 0.5px solid lightgray;
     display: flex;
     align-items: center;
     margin-left: 25px;
     padding: 5px;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
 
 export const Input = styled.input`
@@ -81,4 +86,18 @@ export const MenuItem = styled.div`
         fontSize: "12px",
         marginLeft: "10px"
     })}
+`;
+
+export const LogoutBtn = styled.button`
+    border: 1px solid black;
+    padding: 5px;
+    margin: 0 10px 0 20px;
+    background: inherit;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover {
+        background: #000;
+        color: #fff;
+    }
 `;

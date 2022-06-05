@@ -5,18 +5,19 @@ import pods from './images/pods.jpeg';
 import feelin from './images/feelin.png';
 import xlim from './images/xlim.png';
 import overtopped from './images/overtopped.png';
+import donationDrive from "./images/donationDrive.jpg";
 
 export const sliderItems = [
     {
         id: 1,
-        img: MrOnurbs,
-        title: "NEW ARRIVALS",
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+        img: donationDrive,
+        title: "VOLUNTEERING IS A WORK OF HEART.",
+        desc: "JOIN OUR GROWING COMMUNITY IN HELPING THE VICTIMS OF TYPHOON ULYSSES.",
         bg: "f5fafd"
     },
     {
         id: 2,
-        img: "https://i.ibb.co/XsdmR2c/1.png",
+        img: MrOnurbs,
         title: "SUMMER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
         bg: "f5fafd"

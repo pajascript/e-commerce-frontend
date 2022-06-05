@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {mobile} from '../../responsive';
 
 export const Container = styled.div`
-
+    
 `;
 
 export const Wrapper = styled.div`
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     ${mobile( {
         padding: "10px"
     })}
-
+    min-height: 80vh;
 `;      
 
 export const Title = styled.h1`
@@ -82,6 +82,7 @@ export const Details = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    font-size: 20px;
 `;
 
 export const ProductName = styled.span`
@@ -106,7 +107,7 @@ export const ProductSize = styled.span`
 export const PriceDetail = styled.div`
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
 `;
@@ -167,10 +168,11 @@ export const SummaryItemPrice = styled.span`
 
 `;
 
-export const Button = styled.h1`
-    width: 100%;
+export const StatusButton = styled.button`
+    width: 80%;
     padding: 10px;
-    background: black;
+    background: #ff5e00;
+    border: none;
     color: #fff;
     font-weight: 600;
     cursor: pointer;

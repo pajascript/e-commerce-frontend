@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import accessories from '../../images/accessories.jpg';
+import accessories from '../../images/loginpic.jpg';
 import { mobile } from '../../responsive';
 
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     background: linear-gradient(
-            rgba(255, 255, 255, 0.5), 
-            rgba(255, 255, 255, 0.5)
+            rgba(255, 255, 255, 0.1), 
+            rgba(255, 255, 255, 0.1)
         ), 
         url(${accessories}) center;
     background-size: cover;
@@ -43,7 +43,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    width: 40%;
+    width: 100%;
     border: none;
     padding: 15px 20px;
     background: teal;

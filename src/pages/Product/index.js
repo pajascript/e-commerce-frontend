@@ -68,23 +68,8 @@ const Product = () => {
         <InfoContainer>
           <Title>{product.title}</Title>
           <Desc>{product.description}</Desc>
-          <Price>{product.price}</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              { product.color?.map(color => (
-                <FilterColor color={color} key={color} onClick={() => setColor(c)} />
-                ) ) }
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e) => setSize(e.target.value)}  >
-                { product.size?.map(size => (
-                  <FilterSizeOption key={size} >{size}</FilterSizeOption> 
-                  ) ) }
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
+          <Desc>In Stock: {product.inStock}</Desc>
+          <Price>Price: {product.price}</Price>
           <AddContainer>
             <AmountContainer>
               <Remove onClick={ () => handleQuantity("dec") } />

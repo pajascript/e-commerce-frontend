@@ -91,6 +91,7 @@ export const AddContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 50%;
+    margin-top: 50px;
     ${mobile( {
         width: "100%"
     })}

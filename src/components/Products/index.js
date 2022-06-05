@@ -17,7 +17,9 @@ const Products = ({ category }) => {
   return (
     <Container>
         {
-          products.map(item => <Product item={item} key={item.id} />)
+          products.filter(item => {
+            return item.inStock > 0
+          }).map(item => <Product item={item} key={item.id} />)
         }
     </Container>
   )

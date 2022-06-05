@@ -58,11 +58,11 @@ export const InfoContainer = styled.div`
 `;
 
 export const Img = styled.img`
-    height: 80%;
+    height: 70%;
 `;
 
 export const Title = styled.h1`
-    font-size: 70px;
+    font-size: 50px;
 `;
 
 export const Description = styled.p`

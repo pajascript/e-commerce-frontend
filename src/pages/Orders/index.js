@@ -33,7 +33,7 @@ const Orders = () => {
     const userId = useSelector(state => state.user.currentUser._id)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/orders/find/${userId}`, {headers: {token: `Bearer ${TOKEN}`}})
+        axios.get(`https://kalyeoshop.herokuapp.com/api/orders/find/${userId}`, {headers: {token: `Bearer ${TOKEN}`}})
             .then((res) => {
                 setOrder(res.data)
                 console.log(res.data)

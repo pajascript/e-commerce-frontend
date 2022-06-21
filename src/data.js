@@ -9,17 +9,17 @@ import donationDrive from "./images/donationDrive.jpg";
 
 export const sliderItems = [
     {
-        id: 1,
-        img: donationDrive,
-        title: "VOLUNTEERING IS A WORK OF HEART.",
-        desc: "JOIN OUR GROWING COMMUNITY IN HELPING THE VICTIMS OF TYPHOON ULYSSES.",
-        bg: "f5fafd"
-    },
-    {
         id: 2,
         img: MrOnurbs,
         title: "SUMMER SALE",
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+        bg: "f5fafd"
+    },
+    {
+        id: 1,
+        img: donationDrive,
+        title: "VOLUNTEERING IS A WORK OF HEART.",
+        desc: "JOIN OUR GROWING COMMUNITY IN HELPING THE VICTIMS OF TYPHOON ULYSSES.",
         bg: "f5fafd"
     }
 ];

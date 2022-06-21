@@ -27,7 +27,7 @@ export const Arrow = styled.div`
     right: ${props => props.direction === 'right' && '10px'};
     margin: auto;
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 1;
     z-index: 10;
 `;
 

@@ -8,7 +8,7 @@ const Products = ({ category }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    axios.get( category ? `http://localhost:5000/api/products?category=${category}` : "http://localhost:5000/api/products").then((res) => {
+    axios.get( category ? `https://kalyeoshop.herokuapp.com/api/products?category=${category}` : "https://kalyeoshop.herokuapp.com/api/products").then((res) => {
       setProducts(res.data);
     })
   }, [category]);

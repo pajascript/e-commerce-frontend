@@ -19,7 +19,7 @@ const Success = () => {
       const createOrder = async () => {
         try {
 
-          const res = await axios.post("http://localhost:5000/api/orders", 
+          const res = await axios.post("https://kalyeoshop.herokuapp.com/api/orders", 
           {
             userId: currentUser._id,
             products: cart.products.map((item) => ({
@@ -49,10 +49,10 @@ const Success = () => {
     useEffect(() => {
       const decrementStock = () => {
         cart.products.map(item => {
-          axios.get(`http://localhost:5000/api/products/find/${item._id}`)
+          axios.get(`https://kalyeoshop.herokuapp.com/api/products/find/${item._id}`)
             .then((res) => {
               console.log(res.data.inStock)
-                axios.put(`http://localhost:5000/api/products/${item._id}`, {inStock: res.data.inStock - item.quantity}, {headers: {token: 'Bearer ' + TOKEN}})
+                axios.put(`https://kalyeoshop.herokuapp.com/api/products/${item._id}`, {inStock: res.data.inStock - item.quantity}, {headers: {token: 'Bearer ' + TOKEN}})
                   .then(() => console.log("Inamo"));
             })
         })
